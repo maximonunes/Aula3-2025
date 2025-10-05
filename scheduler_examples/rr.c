@@ -3,6 +3,11 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <stdint.h> // para uint32_t
+
 
 #define RR_SLICE_MS 500
 

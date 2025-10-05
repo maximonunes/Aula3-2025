@@ -2,6 +2,10 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <stdint.h> // para uint32_t
 
 pcb_t *new_pcb(pid_t pid, uint32_t sockfd, uint32_t time_ms) {
     pcb_t * new_task = malloc(sizeof(pcb_t));

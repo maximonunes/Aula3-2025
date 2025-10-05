@@ -2,6 +2,8 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
+#include <stdint.h> // para uint32_t
 
 #include "msg.h"
 #include <unistd.h>
