@@ -306,14 +306,27 @@ int main(int argc, char *argv[]) {
         check_new_commands(&command_queue, &blocked_queue, &ready_queue, server_fd, current_time_ms);
 
         // The scheduler handles the READY queue
-        switch (scheduler_type) {
+        switch (scheduler_type) {//adicionado por mim
             case SCHED_FIFO:
                 fifo_scheduler(current_time_ms, &ready_queue, &CPU);
-                break;
-
+            break;
+            case SCHED_SJF:
+                sjf_scheduler(current_time_ms, &ready_queue, &CPU);
+            break;
+            case SCHED_RR:
+                rr_scheduler(current_time_ms, &ready_queue, &CPU);
+            break;
+            case SCHED_MLFQ:
+                // Cria 3 filas (níveis)
+                    static queue_t q0 = {.head = NULL, .tail = NULL};
+            static queue_t q1 = {.head = NULL, .tail = NULL};
+            static queue_t q2 = {.head = NULL, .tail = NULL};
+            queue_t *queues[] = {&q0, &q1, &q2};
+            mlfq_scheduler(current_time_ms, queues, &CPU);
+            break;
             default:
                 printf("Unknown scheduler type\n");
-                break;
+            break;
         }
 
         // Simulate a tick
