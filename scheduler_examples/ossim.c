@@ -11,12 +11,13 @@
 
 #include <stdlib.h>
 #include <sys/errno.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
+
 #include <stdint.h> // para uint32_t
 
 #include "fifo.h"
+#include "sjf.h"
+#include "rr.h"
+#include "mlfq.h"
 
 #include "msg.h"
 #include "queue.h"
@@ -237,11 +238,9 @@ void check_blocked_queue(queue_t * blocked_queue, queue_t * command_queue, uint3
 
 static const char *SCHEDULER_NAMES[] = {
     "FIFO",
-/*
     "SJF",
     "RR",
     "MLFQ",
-*/
     NULL
 };
 
@@ -336,6 +335,11 @@ int main(int argc, char *argv[]) {
         // Simulate a tick
         usleep(TICKS_MS * 1000/2);
         current_time_ms += TICKS_MS;
+
+        if (all_processes_done) {
+            break;
+        }
+
     }
 
     // Unreachable, because of the infinite loop
