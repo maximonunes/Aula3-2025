@@ -1,4 +1,4 @@
-#include "rrc.h"
+#include "rr.h"
 #include "msg.h"
 #include <unistd.h>
 #include <stdlib.h>
@@ -7,8 +7,6 @@
 #define RR_SLICE_MS 500
 
 void rr_scheduler(uint32_t current_time_ms, queue_t *rq, pcb_t **cpu_task) {
-
-    printf("[RR] Scheduler chamado no tempo %u ms\n", current_time_ms);
 
     static uint32_t slice_used = 0;
 

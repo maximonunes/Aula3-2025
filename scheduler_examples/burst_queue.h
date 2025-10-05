@@ -1,5 +1,7 @@
 #ifndef BURST_QUEUE_H
 #define BURST_QUEUE_H
+#include <stdint.h>
+
 
 #include "msg.h"
 

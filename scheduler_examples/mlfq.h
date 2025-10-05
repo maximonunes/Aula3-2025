@@ -3,6 +3,7 @@
 //
 #ifndef MLFQ_H
 #define MLFQ_H
+#include <stdint.h>
 
 #include "queue.h"
 
